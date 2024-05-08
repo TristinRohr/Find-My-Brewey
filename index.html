@@ -5,54 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet"> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"> -->
     <link href="./src/output.css" rel="stylesheet">
     <title>Find My Brewery</title>
 </head>
 
 <div>
-    <label for="price" class="block text-sm font-medium leading-6 text-gray-900">Price</label>
-    <div class="relative mt-2 rounded-md shadow-sm">
-        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-            <span class="text-gray-500 sm:text-sm">$</span>
-        </div>
-        <input type="text" name="price" id="price"
-            class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            placeholder="0.00">
-        <div class="absolute inset-y-0 right-0 flex items-center">
-            <label for="currency" class="sr-only">Currency</label>
-            <select id="currency" name="currency"
-                class="h-full rounded-md border-0 bg-transparent py-0 pl-2 pr-7 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
-                <option>USD</option>
-                <option>CAD</option>
-                <option>EUR</option>
-            </select>
+    <div class="antialiased text-gray-900 px-6">
+        <div class="max-w-xl mx-auto py-12 divide-y md:max-w-4xl">
+            <div class="py-12">
+                <h2 class="text-2xl font-bold">Search</h2>
+                <div class="mt-8 max-w-md">
+                    <div class="grid grid-cols-1 gap-6">
+                        <label class="block">
+                            <span class="text-gray-700">Enter Zip Code, City, or State</span>
+                            <input type="text"
+                                class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
+                                placeholder="" />
+                        </label>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<div>
-    <ul>"Favorited"</ul>
-    <li class="barFavorites"></li>
-    <!-- search bar form -->
-    <!-- search button -->
-    <div>
-        <ul class="searchResults">
-            <li></li>
-    </div>
-</div>
-</div>
-
-
-
-<!-- <script src="./assets/js/homepage.js"></script> -->
 </body>
 
 </html>
-
-<!-- set up html -->
-<!-- search bar basic tailwind -->
-<!-- make search bar search
-put search term in local storage
- -->
