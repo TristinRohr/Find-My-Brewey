@@ -5,30 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="./src/output.css" rel="stylesheet">
+    <link href="./Assets/css/output.css" rel="stylesheet">
     <title>Find My Brewery</title>
 </head>
 
-<div>
-    <div class="antialiased text-gray-900 px-6">
-        <div class="max-w-xl mx-auto py-12 divide-y md:max-w-4xl">
-            <div class="py-12">
-                <h2 class="text-2xl font-bold">Search</h2>
-                <div class="mt-8 max-w-md">
-                    <div class="grid grid-cols-1 gap-6">
-                        <label class="block">
-                            <span class="text-gray-700">Enter Zip Code, City, or State</span>
-                            <input type="text"
-                                class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
-                                placeholder="" />
-                        </label>
+<body>
+    <div>
+        <div class="antialiased text-gray-900 px-6">
+            <div class="max-w-xl mx-auto py-12 divide-y md:max-w-4xl">
+                <div class="py-12">
+                    <h2 class="text-2xl font-bold">Find My Brewery</h2>
+                    <div class="mt-8 max-w-md">
+                        <div class="grid grid-cols-1 gap-6">
+                            <label class="block">
+                                <span class="text-gray-700">Enter Zip Code, City, or State</span>
+                                <input type="text" class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
+                                    placeholder="" />
+                            </label>
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                Search
+                            </button>
+                            <div class="relative mt-4">
+                                <button
+                                    class="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
+                                    Favorites
+                                </button>
+                                <div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
+    <script src="./Assets/JavaScript/tailwind.config.js"></script>
+    <script src="./Assets/JavaScript/scrpit.js"></script>
 </body>
 
 </html>
