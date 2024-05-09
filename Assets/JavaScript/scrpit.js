@@ -20,7 +20,7 @@ function searchBasedOnInput() {
 
 // Function to find breweries near user's location
 function findBreweriesNearMe() {
-    fetch('http://ip-api.com/json/?fields=city')
+    fetch('http://ip-api.com/json/?fields=regionName')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -29,10 +29,10 @@ function findBreweriesNearMe() {
         })
         .then(userLocation => {
             console.log('User location:', userLocation); // Debugging: Log user location data
-            var city = userLocation.city;
-            console.log('City:', city); // Debugging: Log city
-            if (city !== undefined && city !== null && city !== '') {
-                searchBreweries(city, 'by_city');
+            var state = userLocation.state;
+            console.log('City:', state); // Debugging: Log city
+            if (state !== undefined && state !== null && state !== '') {
+                searchBreweries(state);
             } else {
                 alert('Failed to get user location');
             }
