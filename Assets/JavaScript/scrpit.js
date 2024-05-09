@@ -1,46 +1,53 @@
-// fetch data from IP-API
-function searchLocation() {
+ // Add event listener to the submit button for searching based on user input
+ document.getElementById("submitBtn").addEventListener("click", function () {
+    searchBasedOnInput(); // Call the function to search based on user input
+});
+
+// Add event listener to the "Find Breweries Near Me" button for finding breweries near user's location
+document.getElementById("findNearMeBtn").addEventListener("click", function () {
+    findBreweriesNearMe(); // Call the function to find breweries near user's location
+});
+
+// Function to search breweries based on user input
+function searchBasedOnInput() {
     var query = document.getElementById('searchInput').value;
     if (query.trim() !== '') {
-        var apiUrl = 'http://ip-api.com/json/' + query;
-
-        fetch(apiUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            // after fetching data from IP-API, search breweries based on city, state or postal code
-            .then(data => {
-                if (data.status === 'success') {
-                    var city = data.city;
-                    var state = data.regionName;
-                    var zip = data.zip;
-                    if (city) {
-                        searchBreweries(city, 'city');
-                    } else if (state) {
-                        searchBreweries(state, 'state');
-                    } else if (zip) {
-                        searchBreweries(zip, 'postal_code');
-                    } else {
-                        alert('No location data found');
-                    }
-                } else {
-                    alert('Error: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Failed to fetch data from IP-API');
-            });
+        searchBreweries(query);
     } else {
         alert('Please enter a valid query');
     }
 }
-// fetch data from Open Brewery DB API
-function searchBreweries(location, type) {
-    var apiUrl = 'https://api.openbrewerydb.org/v1/breweries?' + type + '=' + location;
+
+// Function to find breweries near user's location
+function findBreweriesNearMe() {
+    fetch('http://ip-api.com/json/?fields=city')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(userLocation => {
+            console.log('User location:', userLocation); // Debugging: Log user location data
+            var city = userLocation.city;
+            console.log('City:', city); // Debugging: Log city
+            if (city !== undefined && city !== null && city !== '') {
+                searchBreweries(city, 'by_city');
+            } else {
+                alert('Failed to get user location');
+            }
+        })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to fetch user location from IP-API');
+            });
+}
+
+// Function to search breweries using the Open Brewery DB API
+function searchBreweries(query = '') {
+    console.log('Searching breweries near: ', location)
+    var apiUrl = 'https://api.openbrewerydb.org/v1/breweries/search?query=' + query;
+
 
     fetch(apiUrl)
         .then(response => {
@@ -51,14 +58,14 @@ function searchBreweries(location, type) {
         })
         .then(data => {
             if (data.length > 0) {
-                alert('Found ' + data.length + ' breweries in ' + location);
-                console.log(data); // Display data in console
+                alert('Found ' + data.length + ' breweries');
+                console.log(data); // Display brewery data in console
             } else {
-                alert('No breweries found in ' + location);
+                alert('No breweries found');
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('Failed to fetch data from Open Brewery DB API');
+            alert('Failed to fetch breweries');
         });
 }
