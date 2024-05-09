@@ -20,7 +20,7 @@ function searchBasedOnInput() {
 
 // Function to find breweries near user's location
 function findBreweriesNearMe() {
-    fetch('http://ip-api.com/json/?fields=regionName')
+    fetch('https://api.ipgeolocation.io/ipgeo?apiKey=ffd1b3ca5b3d46aab22ef6c4e8520bc4&fields=state_prov')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -29,7 +29,7 @@ function findBreweriesNearMe() {
         })
         .then(userLocation => {
             console.log('User location:', userLocation); // Debugging: Log user location data
-            var state = userLocation.regionName;
+            var state = userLocation.state_prov;
             console.log('State:', state); // Debugging: Log city
             if (state !== undefined && state !== null && state !== '') {
                 searchBreweries(state);
