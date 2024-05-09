@@ -1,5 +1,5 @@
- // Add event listener to the submit button for searching based on user input
- document.getElementById("submitBtn").addEventListener("click", function () {
+// Add event listener to the submit button for searching based on user input
+document.getElementById("submitBtn").addEventListener("click", function () {
     searchBasedOnInput(); // Call the function to search based on user input
 });
 
@@ -65,3 +65,57 @@ function searchBreweries(query = '') {
             alert('Failed to fetch breweries');
         });       
 }
+// Store the favoriteBreweries array in local storage this is for testing purposes
+var favoriteBreweries = [
+    { name: 'Brewery 1', city: 'City 1', state: 'State 1' },
+    { name: 'Brewery 2', city: 'City 2', state: 'State 2' },
+    { name: 'Brewery 3', city: 'City 3', state: 'State 3' },
+    { name: 'Brewery 4', city: 'City 4', state: 'State 4' },
+    { name: 'Brewery 5', city: 'City 5', state: 'State 5' }
+];
+
+localStorage.setItem('favoriteBreweries', JSON.stringify(favoriteBreweries));
+
+// Function to display favorited breweries in dropdown
+function displayFavorites() {
+    var favoritesDropdown = document.getElementById('favoritesDropdown');
+    favoritesDropdown.innerHTML = ''; // Clear previous dropdown items
+
+    // Retrieve favorited breweries from local storage
+    var favoritedBreweries = JSON.parse(localStorage.getItem('favoriteBreweries')) || [];
+
+    if (favoritedBreweries.length > 0) {
+        favoritedBreweries.forEach(brewery => {
+            var option = document.createElement('option');
+            option.text = brewery.name;
+            option.value = brewery.id;
+            favoritesDropdown.appendChild(option);
+        });
+    } else {
+        var option = document.createElement('option');
+        option.text = 'No favorites found';
+        favoritesDropdown.appendChild(option);
+    }
+}
+
+// Event listener for the Favorites button
+document.getElementById('favoritesButton').addEventListener('click', function () {
+    // Toggle the class to show/hide the dropdown when the Favorites button is clicked
+    document.getElementById('favoritesDropdown').classList.toggle('show');
+});
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+    if (!event.target.matches('.favoritesButton')) {
+        var dropdowns = document.getElementsByClassName("favoritesDropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
+
+// Call the displayFavorites function initially to populate the dropdown
+displayFavorites();
