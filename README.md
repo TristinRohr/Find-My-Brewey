@@ -11,10 +11,13 @@ Welcome to BrewFinder, your go-to platform for discovering breweries near you! W
 
 2. **Explore Brewery Details:**
    - Click on a brewery name to view more details.
-   - Explore the brewery's address, contact information, hours of operation, and more.
+   - Explore the brewery's //add which details are being generated
 
 3. **Favorite**
     -Add breweries to your favorites so you can plan ahead.
+
+4. **Turn off Ad-Blockers**
+   - The API's fetch will be blocked by Ad-Blockers
 
 
 ## Contributing
@@ -31,7 +34,7 @@ We're constantly striving to improve Find My Brewery, and your feedback is inval
 
 ## Technologies Used
 
-- [IP-API](https://ip-api.com/docs)
+- [IPgeoloaction](https://ipgeolocation.io/documentation.html)
 - [OpenBrewery API](https://www.openbrewerydb.org/documentation/)
 - JavaScript
 - CSS
