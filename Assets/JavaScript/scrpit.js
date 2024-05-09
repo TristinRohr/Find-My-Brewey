@@ -57,15 +57,10 @@ function searchBreweries(query = '') {
             return response.json();
         })
         .then(data => {
-            if (data.length > 0) {
-                alert('Found ' + data.length + ' breweries');
-                console.log(data); // Display brewery data in console
-            } else {
-                alert('No breweries found');
-            }
+            displayBreweries(data)
         })
         .catch(error => {
             console.error('Error:', error);
             alert('Failed to fetch breweries');
-        });
+        });       
 }
