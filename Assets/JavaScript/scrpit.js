@@ -29,8 +29,8 @@ function findBreweriesNearMe() {
         })
         .then(userLocation => {
             console.log('User location:', userLocation); // Debugging: Log user location data
-            var state = userLocation.state;
-            console.log('City:', state); // Debugging: Log city
+            var state = userLocation.regionName;
+            console.log('State:', state); // Debugging: Log city
             if (state !== undefined && state !== null && state !== '') {
                 searchBreweries(state);
             } else {
