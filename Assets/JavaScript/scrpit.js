@@ -119,3 +119,30 @@ window.onclick = function(event) {
 
 // Call the displayFavorites function initially to populate the dropdown
 displayFavorites();
+
+//Display search results
+const resultsContainer = document.getElementById('resultsContainer');
+
+function displayBreweries(breweries) {
+    var resultsContainer = document.getElementById('resultsContainer');
+    resultsContainer.innerHTML = '';
+
+    if (breweries.length > 0) {
+        var ul = document.createElement('ul');
+        breweries.forEach(function(brewery) {
+            var li = document.createElement('li');
+            li.textContent = brewery.name + ' ' + 'City: ' + brewery.city + ' ' + 'Address: ' + ' ' + brewery.address_1 + ' ';
+
+            var link = document.createElement('a');
+            link.href = brewery.website_url;
+            link.textContent = 'Visit Website';
+            link.target = '_blank';
+            
+            li.appendChild(link);
+            ul.appendChild(li);
+        });
+        resultsContainer.appendChild(ul);
+    } else {
+        resultsContainer.textContent = 'No breweries found';
+    }
+}
