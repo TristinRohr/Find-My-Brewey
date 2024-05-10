@@ -101,7 +101,7 @@ function displayFavorites() {
 // Event listener for the Favorites button
 document.getElementById('favoritesButton').addEventListener('click', function () {
     // Toggle the class to show/hide the dropdown when the Favorites button is clicked
-    document.getElementById('favoritesDropdown').classList.toggle('show');
+    document.getElementById('favoritesDropdown').classList.toggle('hidden');
 });
 
 // Close the dropdown menu if the user clicks outside of it
