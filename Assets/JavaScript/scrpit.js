@@ -57,6 +57,7 @@ function searchBreweries(query = '') {
             return response.json();
         })
         .then(data => {
+            displayBreweries(data);
             console.log('Breweries:', data); // Debugging: Log breweries data
             // displayBreweries(data)
         })
