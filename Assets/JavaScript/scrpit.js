@@ -64,16 +64,14 @@ function displayBreweries(breweries) {
 
             var link = document.createElement('a');
             link.href = brewery.website_url;
-            link.textContent = 'Visit Website';
+            link.textContent = 'Visit Website ';
             link.target = '_blank';
 
             var saveButton = document.createElement('button');
-            saveButton.textContent = 'Save';
+            saveButton.textContent = ' Favorite';
             saveButton.addEventListener('click', function() {
                 // Add the clicked brewery to local storage
                 addToFavorites(brewery);
-                // Optionally, update the display of favorite breweries immediately
-                // displayFavorites();
             });
 
             li.appendChild(link);
