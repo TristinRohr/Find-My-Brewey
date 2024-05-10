@@ -5,8 +5,7 @@ var favoriteBreweries = JSON.parse(localStorage.getItem('favoriteBreweries')) ||
 function addToFavorites(brewery) {
     favoriteBreweries.push(brewery);
     localStorage.setItem('favoriteBreweries', JSON.stringify(favoriteBreweries));
-    displayFavorites(); // Update the display of favorite breweries
-=======
+}
 // Add event listener to the submit button for searching based on user input
 document.getElementById("submitBtn").addEventListener("click", function () {
     searchBasedOnInput(); // Call the function to search based on user input
