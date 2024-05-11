@@ -159,7 +159,7 @@ function findBreweriesNearMe() {
 // Function to search breweries using the Open Brewery DB API
 function searchBreweries(query = '') {
     console.log('Searching breweries near: ', location)
-    var apiUrl = 'https://api.openbrewerydb.org/v1/breweries/search?query=' + query;
+    var apiUrl = 'https://api.openbrewerydb.org/v1/breweries/search?query=' + query + '&per_page=10';
 
 
     fetch(apiUrl)
