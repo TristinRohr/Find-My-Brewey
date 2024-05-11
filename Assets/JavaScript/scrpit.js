@@ -52,29 +52,55 @@ displayFavorites();
 //Display search results
 const resultsContainer = document.getElementById('resultsContainer');
 
+// Function to display search results
 function displayBreweries(breweries) {
     var resultsContainer = document.getElementById('resultsContainer');
     resultsContainer.innerHTML = '';
 
     if (breweries.length > 0) {
         var ul = document.createElement('ul');
+        ul.classList.add('space-y-4'); // Apply Tailwind spacing between list items
         breweries.forEach(function(brewery) {
             var li = document.createElement('li');
-            li.textContent = brewery.name + ' ' + 'City: ' + brewery.city + ' ' + 'Address: ' + ' ' + brewery.address_1 + ' ';
+            li.classList.add('bg-orange-100', 'shadow-md', 'p-4', 'rounded-lg', 'flex', 'items-center', 'justify-between'); // Apply Tailwind styling to each list item
+
+            var infoDiv = document.createElement('div');
+            infoDiv.classList.add('flex', 'flex-col', 'space-y-2'); // Apply Tailwind styling to info column
+
+            var name = document.createElement('h3');
+            name.textContent = brewery.name;
+            name.classList.add('text-lg', 'font-bold', 'text-gray-800'); // Apply Tailwind styling to brewery name
+
+            var city = document.createElement('p');
+            city.textContent = 'City: ' + brewery.city;
+            city.classList.add('text-gray-600'); // Apply Tailwind styling to city
+
+            var address = document.createElement('p');
+            address.textContent = 'Address: ' + brewery.address_1;
+            address.classList.add('text-gray-600'); // Apply Tailwind styling to address
 
             var link = document.createElement('a');
             link.href = brewery.website_url;
-            link.textContent = 'Visit Website ';
+            link.textContent = 'Visit Website';
             link.target = '_blank';
+            link.classList.add('text-blue-500', 'hover:text-blue-700', 'font-bold', 'underline'); // Apply Tailwind styling to link
+
+            infoDiv.appendChild(name);
+            infoDiv.appendChild(city);
+            infoDiv.appendChild(address);
+            infoDiv.appendChild(link);
 
             var saveButton = document.createElement('button');
-            saveButton.textContent = ' Favorite';
+            saveButton.textContent = 'Save';
+            saveButton.classList.add('bg-red-500', 'hover:bg-red-600', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded', 'focus:outline-none', 'focus:ring-2', 'focus:ring-red-500', 'focus:ring-opacity-50'); // Apply Tailwind styling to save button
             saveButton.addEventListener('click', function() {
                 // Add the clicked brewery to local storage
                 addToFavorites(brewery);
+                // Optionally, update the display of favorite breweries immediately
+                // displayFavorites();
             });
 
-            li.appendChild(link);
+            li.appendChild(infoDiv);
             li.appendChild(saveButton);
             ul.appendChild(li);
         });
@@ -83,6 +109,7 @@ function displayBreweries(breweries) {
         resultsContainer.textContent = 'No breweries found';
     }
 }
+
 
 // Add event listener to the submit button for searching based on user input
 document.getElementById("submitBtn").addEventListener("click", function () {
