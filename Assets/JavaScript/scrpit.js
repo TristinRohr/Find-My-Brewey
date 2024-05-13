@@ -58,42 +58,37 @@ function displayBreweries(breweries) {
     resultsContainer.innerHTML = '';
 
     if (breweries.length > 0) {
-        var ul = document.createElement('ul');
-        ul.classList.add('space-y-4'); // Apply Tailwind spacing between list items
+        var div = document.createElement('div');
+        div.classList.add('grid', 'grid-cols-1', 'sm:grid-cols-2', 'md:grid-cols-3', 'lg:grid-cols-4', 'gap-4', 'mx-auto', 'p-4');
+
         breweries.forEach(function(brewery) {
-            var li = document.createElement('li');
-            li.classList.add('columns-1', 'sm:columns-2', 'md:columns-3', 'lg:columns-4', 'bg-orange-100', 'shadow-md', 'p-4', 'rounded-lg', 'flex', 'items-center', 'justify-between'); // Apply Tailwind styling to each list item
+            var li = document.createElement('div');
+            li.classList.add('flex', 'flex-col', 'bg-orange-100', 'shadow-md', 'p-4', 'rounded-lg', 'space-y-2');
 
             var infoDiv = document.createElement('div');
-            infoDiv.classList.add('flex', 'flex-col', 'space-y-2'); // Apply Tailwind styling to info column
+            infoDiv.classList.add('flex', 'flex-col', 'space-y-2');
 
             var name = document.createElement('h3');
             name.textContent = brewery.name;
-            name.classList.add('text-lg', 'font-bold', 'text-gray-800'); // Apply Tailwind styling to brewery name
+            name.classList.add('text-lg', 'font-bold', 'text-gray-800');
 
             var city = document.createElement('p');
             city.textContent = 'City: ' + brewery.city;
-            city.classList.add('text-gray-600'); // Apply Tailwind styling to city
+            city.classList.add('text-gray-600');
 
             var address = document.createElement('p');
             address.textContent = 'Address: ' + brewery.address_1;
-            address.classList.add('text-gray-600'); // Apply Tailwind styling to address
+            address.classList.add('text-gray-600');
 
             var link = document.createElement('a');
             link.href = brewery.website_url;
             link.textContent = 'Visit Website';
             link.target = '_blank';
-            link.classList.add('text-blue-500', 'hover:text-blue-700', 'font-bold', 'underline'); // Apply Tailwind styling to link
+            link.classList.add('text-blue-500', 'hover:text-blue-700', 'font-bold', 'underline');
 
             var saveButton = document.createElement('button');
             saveButton.textContent = 'Save';
-            saveButton.classList.add('bg-red-500', 'hover:bg-red-600', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded', 'focus:outline-none', 'focus:ring-2', 'focus:ring-red-500', 'focus:ring-opacity-50'); // Apply Tailwind styling to save button
-            saveButton.addEventListener('click', function() {
-                // Add the clicked brewery to local storage
-                addToFavorites(brewery);
-                // Optionally, update the display of favorite breweries immediately
-                // displayFavorites();
-            });
+            saveButton.classList.add('bg-red-500', 'hover:bg-red-600', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded', 'focus:outline-none', 'focus:ring-2', 'focus:ring-red-500', 'focus:ring-opacity-50', 'place-self-end');
 
             infoDiv.appendChild(name);
             infoDiv.appendChild(city);
@@ -102,9 +97,10 @@ function displayBreweries(breweries) {
 
             li.appendChild(infoDiv);
             li.appendChild(saveButton);
-            ul.appendChild(li);
+            div.appendChild(li);
+
         });
-        resultsContainer.appendChild(ul);
+        resultsContainer.appendChild(div);
     } else {
         resultsContainer.textContent = 'No breweries found';
     }
@@ -160,7 +156,7 @@ function findBreweriesNearMe() {
 // Function to search breweries using the Open Brewery DB API
 function searchBreweries(query = '') {
     console.log('Searching breweries near: ', location)
-    var apiUrl = 'https://api.openbrewerydb.org/v1/breweries/search?query=' + query + '&per_page=10';
+    var apiUrl = 'https://api.openbrewerydb.org/v1/breweries/search?query=' + query + '&per_page=12';
 
 
     fetch(apiUrl)
