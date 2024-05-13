@@ -62,7 +62,7 @@ function displayBreweries(breweries) {
         ul.classList.add('space-y-4'); // Apply Tailwind spacing between list items
         breweries.forEach(function(brewery) {
             var li = document.createElement('li');
-            li.classList.add('bg-orange-100', 'shadow-md', 'p-4', 'rounded-lg', 'flex', 'items-center', 'justify-between'); // Apply Tailwind styling to each list item
+            li.classList.add('columns-1', 'sm:columns-2', 'md:columns-3', 'lg:columns-4', 'bg-orange-100', 'shadow-md', 'p-4', 'rounded-lg', 'flex', 'items-center', 'justify-between'); // Apply Tailwind styling to each list item
 
             var infoDiv = document.createElement('div');
             infoDiv.classList.add('flex', 'flex-col', 'space-y-2'); // Apply Tailwind styling to info column
@@ -85,11 +85,6 @@ function displayBreweries(breweries) {
             link.target = '_blank';
             link.classList.add('text-blue-500', 'hover:text-blue-700', 'font-bold', 'underline'); // Apply Tailwind styling to link
 
-            infoDiv.appendChild(name);
-            infoDiv.appendChild(city);
-            infoDiv.appendChild(address);
-            infoDiv.appendChild(link);
-
             var saveButton = document.createElement('button');
             saveButton.textContent = 'Save';
             saveButton.classList.add('bg-red-500', 'hover:bg-red-600', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded', 'focus:outline-none', 'focus:ring-2', 'focus:ring-red-500', 'focus:ring-opacity-50'); // Apply Tailwind styling to save button
@@ -100,6 +95,11 @@ function displayBreweries(breweries) {
                 // displayFavorites();
             });
 
+            infoDiv.appendChild(name);
+            infoDiv.appendChild(city);
+            infoDiv.appendChild(address);
+            infoDiv.appendChild(link);
+
             li.appendChild(infoDiv);
             li.appendChild(saveButton);
             ul.appendChild(li);
@@ -109,6 +109,7 @@ function displayBreweries(breweries) {
         resultsContainer.textContent = 'No breweries found';
     }
 }
+
 
 
 // Add event listener to the submit button for searching based on user input

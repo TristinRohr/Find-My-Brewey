@@ -3,4 +3,6 @@ body {
     background-size: cover; /* This ensures the image covers the entire background */
     background-repeat: no-repeat; /* Prevents the image from repeating */
     background-attachment: fixed; /* Prevents the image from scrolling */
+    font-family: "Bebas Neue", sans-serif;
 }
+  
