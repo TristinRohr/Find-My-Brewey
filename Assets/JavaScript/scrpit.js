@@ -16,9 +16,12 @@ function displayFavorites() {
     if (favoriteBreweries.length > 0) {
         favoriteBreweries.forEach(brewery => {
             var option = document.createElement('option');
+            var optionLink = document.createElement('a');
+            optionLink.appendChild(option);
+            optionLink.href = brewery.website_url;
             option.text = brewery.name;
             option.value = brewery.id;
-            favoritesDropdown.appendChild(option);
+            favoritesDropdown.appendChild(optionLink);
         });
     } else {
         var option = document.createElement('option');
