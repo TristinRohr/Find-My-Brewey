@@ -15,10 +15,14 @@ function displayFavorites() {
 
     if (favoriteBreweries.length > 0) {
         favoriteBreweries.forEach(brewery => {
+
             var option = document.createElement('option');
+            var optionLink = document.createElement('a');
+            optionLink.appendChild(option);
             option.text = brewery.name;
             option.value = brewery.id;
-            favoritesDropdown.appendChild(option);
+            optionLink.href = brewery.website_url;
+            favoritesDropdown.appendChild(optionLink);
         });
     } else {
         var option = document.createElement('option');
@@ -34,7 +38,7 @@ document.getElementById('favoritesButton').addEventListener('click', function ()
 });
 
 // Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (!event.target.matches('.favoritesButton')) {
         var dropdowns = document.getElementsByClassName("favoritesDropdown-content");
         for (var i = 0; i < dropdowns.length; i++) {
@@ -60,7 +64,7 @@ function displayBreweries(breweries) {
     if (breweries.length > 0) {
         var ul = document.createElement('ul');
         ul.classList.add('space-y-4'); // Apply Tailwind spacing between list items
-        breweries.forEach(function(brewery) {
+        breweries.forEach(function (brewery) {
             var li = document.createElement('li');
             li.classList.add('columns-1', 'sm:columns-2', 'md:columns-3', 'lg:columns-4', 'bg-orange-100', 'shadow-md', 'p-4', 'rounded-lg', 'flex', 'items-center', 'justify-between'); // Apply Tailwind styling to each list item
 
@@ -88,7 +92,7 @@ function displayBreweries(breweries) {
             var saveButton = document.createElement('button');
             saveButton.textContent = 'Save';
             saveButton.classList.add('bg-red-500', 'hover:bg-red-600', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded', 'focus:outline-none', 'focus:ring-2', 'focus:ring-red-500', 'focus:ring-opacity-50'); // Apply Tailwind styling to save button
-            saveButton.addEventListener('click', function() {
+            saveButton.addEventListener('click', function () {
                 // Add the clicked brewery to local storage
                 addToFavorites(brewery);
                 // Optionally, update the display of favorite breweries immediately
@@ -178,5 +182,5 @@ function searchBreweries(query = '') {
         .catch(error => {
             console.error('Error:', error);
             alert('Failed to fetch breweries');
-        });       
+        });
 }
