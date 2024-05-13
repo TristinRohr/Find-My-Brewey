@@ -43,13 +43,14 @@ We're constantly striving to improve Find My Brewery, and your feedback is inval
 
 ## Credits
 
-This was developed by Tristin Rohr, Sarah Pilecki and Martin Meggett
+This was developed by Tristin Rohr, Sarah Pilecki and Martin Meggett.
 
 ## License
 
 BrewFinder is licensed under the [MIT License](#). Feel free to use, modify, and distribute the codebase according to the terms of the license. Contributions are always welcome!
 
-
+## Deployed Site
+https://tristinrohr.github.io/Find-My-Brewey/
 
 
 
