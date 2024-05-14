@@ -18,9 +18,10 @@ function displayFavorites() {
             var option = document.createElement('option');
             var optionLink = document.createElement('a');
             optionLink.appendChild(option);
-            optionLink.href = brewery.website_url;
+            
             option.text = brewery.name;
             option.value = brewery.id;
+            optionLink.href = brewery.website_url;
             favoritesDropdown.appendChild(optionLink);
         });
     } else {
@@ -35,19 +36,6 @@ document.getElementById('favoritesButton').addEventListener('click', function ()
     // Toggle the class to show/hide the dropdown when the Favorites button is clicked
     document.getElementById('favoritesDropdown').classList.toggle('hidden');
 });
-
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-    if (!event.target.matches('.favoritesButton')) {
-        var dropdowns = document.getElementsByClassName("favoritesDropdown-content");
-        for (var i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
-    }
-}
 
 // Call the displayFavorites function initially to populate the dropdown
 displayFavorites();
@@ -92,6 +80,9 @@ function displayBreweries(breweries) {
             var saveButton = document.createElement('button');
             saveButton.textContent = 'Save';
             saveButton.classList.add('bg-red-500', 'hover:bg-red-600', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded', 'focus:outline-none', 'focus:ring-2', 'focus:ring-red-500', 'focus:ring-opacity-50', 'place-self-end');
+            saveButton.addEventListener('click', function() {
+                addToFavorites(brewery);
+            });
 
             infoDiv.appendChild(name);
             infoDiv.appendChild(city);
