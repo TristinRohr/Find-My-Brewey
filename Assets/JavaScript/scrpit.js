@@ -3,10 +3,30 @@ var favoriteBreweries = JSON.parse(localStorage.getItem('favoriteBreweries')) ||
 
 // Function to add a brewery to favoriteBreweries array and store it in local storage
 function addToFavorites(brewery) {
-    favoriteBreweries.push(brewery);
-    localStorage.setItem('favoriteBreweries', JSON.stringify(favoriteBreweries));
-    displayFavorites(); // Update the display of favorite breweries
+    var existingBrewery = favoriteBreweries.find(b => b.id === brewery.id);
+    if (!existingBrewery) {
+        favoriteBreweries.push(brewery);
+        localStorage.setItem('favoriteBreweries', JSON.stringify(favoriteBreweries));
+        displayFavorites();
+    } else {
+        // Show modal alert
+        showModal('This brewery is already in your favorites.');
+    }
 }
+
+// Function to show modal alert
+function showModal(message) {
+    var modal = document.getElementById('modal');
+    var modalMessage = document.getElementById('modalMessage');
+    modalMessage.textContent = message;
+    modal.classList.remove('hidden');
+}
+
+// Close modal button event listener
+document.getElementById('modalCloseButton').addEventListener('click', function () {
+    var modal = document.getElementById('modal');
+    modal.classList.add('hidden');
+});
 
 // Function to display favorited breweries in dropdown
 function displayFavorites() {
