@@ -179,7 +179,7 @@ function findBreweriesNearMe() {
             console.log('Latitude:', latitude); // Debugging: Log latitude
             console.log('Longitude:', longitude); // Debugging: Log longitude
             if (latitude !== undefined && longitude !== undefined) {
-                searchBreweries(latitude, longitude);
+                searchBreweries('', latitude, longitude); // Pass empty query for nearby search
             } else {
                 alert('Failed to get user location');
             }
@@ -191,10 +191,22 @@ function findBreweriesNearMe() {
 }
 
 // Function to search breweries using the Open Brewery DB API
-function searchBreweries(latitude, longitude) {
-    console.log('Searching breweries near: ', location)
-    var apiUrl = 'https://api.openbrewerydb.org/v1/breweries?by_dist=' + latitude + ',' +longitude + '&per_page=12';
+function searchBreweries(query, latitude, longitude) {
+    var apiUrl = 'https://api.openbrewerydb.org/v1/breweries?';
 
+    // Check if query is empty for nearby search
+    if (!query.trim()) {
+        // Use latitude and longitude for nearby search
+        apiUrl += 'by_dist=' + latitude + ',' + longitude;
+    } else if (!isNaN(query)) {
+        // If query is a number, assume it's latitude and longitude
+        apiUrl += 'by_dist=' + query;
+    } else {
+        // If query is not a number, assume it's a state abbreviation
+        apiUrl += 'by_state=' + encodeURIComponent(query);
+    }
+
+    apiUrl += '&per_page=12';
 
     fetch(apiUrl)
         .then(response => {
@@ -213,3 +225,5 @@ function searchBreweries(latitude, longitude) {
             alert('Failed to fetch breweries');
         });       
 }
+
+
