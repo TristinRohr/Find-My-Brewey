@@ -7,7 +7,7 @@ Welcome to Find My Brewery, your go-to platform for discovering breweries near y
 ## How to Use
 
 1. **Search by Location:**
-   - Enter a city, state, or zipcode in the search bar.
+   - Enter a state in the search bar.
    - Click the search button.
    - Browse through the list of breweries in your specified location.
 
