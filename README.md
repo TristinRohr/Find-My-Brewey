@@ -1,6 +1,6 @@
 # Find-My-Brewery
 
-Welcome to BrewFinder, your go-to platform for discovering breweries near you! Whether you're a craft beer enthusiast or simply looking for a new spot to unwind, Find My Brewery makes it easy to find breweries in any city, state, or zipcode.
+Welcome to Find My Brewery, your go-to platform for discovering breweries near you! Whether you're a craft beer enthusiast or simply looking for a new spot to unwind, Find My Brewery makes it easy to find breweries in any city, state, or zipcode.
 
 ![Screenshot](Assets/Screenshotbr.png)
 
@@ -13,8 +13,7 @@ Welcome to BrewFinder, your go-to platform for discovering breweries near you! W
 
 2. **Explore Brewery Details:**
    - Click on a brewery name to view more details.
-   - Explore the brewery's //add which details are being generated
-
+   - Explore the brewery's name, city, address, and link to their website.
 3. **Favorite:**
    - Add breweries to your favorites so you can plan ahead.
 
@@ -24,7 +23,7 @@ Welcome to BrewFinder, your go-to platform for discovering breweries near you! W
 
 ## Contributing
 
-Find my Brewery is a community-driven platform, and we welcome contributions to improve the database of breweries. If you know of a brewery that's missing from our listings or if you have any suggestions for enhancing the user experience, feel free to reach out or submit a pull request on GitHub.
+Find My Brewery is a community-driven platform, and we welcome contributions to improve the database of breweries. If you know of a brewery that's missing from our listings or if you have any suggestions for enhancing the user experience, feel free to reach out or submit a pull request on GitHub.
 
 ## About
 
@@ -45,7 +44,7 @@ We're constantly striving to improve Find My Brewery, and your feedback is inval
 
 ## Credits
 
-This was developed by Tristin Rohr, Sarah Pilecki and Martin Meggett.
+This was developed by [Tristin Rohr](https://github.com/TristinRohr), [Sarah Pilecki](https://github.com/smpilecki) and [Martin Meggett](https://github.com/MMeggett).
 
 ## License
 
