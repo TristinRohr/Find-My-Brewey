@@ -15,14 +15,25 @@ function displayFavorites() {
 
     if (favoriteBreweries.length > 0) {
         favoriteBreweries.forEach(brewery => {
-            var option = document.createElement('option');
+            var listItem = document.createElement('li');
+
             var optionLink = document.createElement('a');
-            optionLink.appendChild(option);
-            
-            option.text = brewery.name;
-            option.value = brewery.id;
+            optionLink.textContent = brewery.name;
             optionLink.href = brewery.website_url;
-            favoritesDropdown.appendChild(optionLink);
+            listItem.appendChild(optionLink);
+
+            var deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Remove';
+            deleteButton.classList.add('bg-red-500', 'text-white', 'm-3', 'rounded');
+            
+            // Event listener to remove brewery from favorites
+            deleteButton.addEventListener('click', function(event) {
+                event.stopPropagation(); // Stop event propagation to prevent anchor click
+                removeFavorite(brewery.id);
+            });
+
+            listItem.appendChild(deleteButton);
+            favoritesDropdown.appendChild(listItem);
         });
     } else {
         var option = document.createElement('option');
@@ -30,6 +41,16 @@ function displayFavorites() {
         favoritesDropdown.appendChild(option);
     }
 }
+
+
+// Function to remove a brewery from the favorites list
+function removeFavorite(breweryId) {
+    favoriteBreweries = favoriteBreweries.filter(brewery => brewery.id !== breweryId);
+    localStorage.setItem('favoriteBreweries', JSON.stringify(favoriteBreweries));
+    displayFavorites(); // Update the display of favorite breweries
+}
+
+
 
 // Event listener for the Favorites button
 document.getElementById('favoritesButton').addEventListener('click', function () {
