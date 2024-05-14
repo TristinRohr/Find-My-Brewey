@@ -133,7 +133,7 @@ function searchBasedOnInput() {
 
 // Function to find breweries near user's location
 function findBreweriesNearMe() {
-    fetch('https://api.ipgeolocation.io/ipgeo?apiKey=ffd1b3ca5b3d46aab22ef6c4e8520bc4&fields=state_prov')
+    fetch('https://api.ipgeolocation.io/ipgeo?apiKey=ffd1b3ca5b3d46aab22ef6c4e8520bc4')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -142,24 +142,26 @@ function findBreweriesNearMe() {
         })
         .then(userLocation => {
             console.log('User location:', userLocation); // Debugging: Log user location data
-            var state = userLocation.state_prov;
-            console.log('State:', state); // Debugging: Log city
-            if (state !== undefined && state !== null && state !== '') {
-                searchBreweries(state);
+            var latitude = userLocation.latitude;
+            var longitude = userLocation.longitude;
+            console.log('Latitude:', latitude); // Debugging: Log latitude
+            console.log('Longitude:', longitude); // Debugging: Log longitude
+            if (latitude !== undefined && longitude !== undefined) {
+                searchBreweries(latitude, longitude);
             } else {
                 alert('Failed to get user location');
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('Failed to fetch user location from IP-API');
+            alert('Failed to fetch user location');
         });
 }
 
 // Function to search breweries using the Open Brewery DB API
-function searchBreweries(query = '') {
+function searchBreweries(latitude, longitude) {
     console.log('Searching breweries near: ', location)
-    var apiUrl = 'https://api.openbrewerydb.org/v1/breweries/search?query=' + query + '&per_page=12';
+    var apiUrl = 'https://api.openbrewerydb.org/v1/breweries?by_dist=' + latitude + ',' +longitude + '&per_page=12';
 
 
     fetch(apiUrl)
