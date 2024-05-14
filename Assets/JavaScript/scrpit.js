@@ -140,14 +140,18 @@ function displayBreweries(breweries) {
         resultsContainer.textContent = 'No breweries found';
     }
 }
-
-
+// Add event listener to the search input for searching based on user input
+function handlekeypress(event) {
+    if (event.key === 'Enter') {
+        searchBasedOnInput();
+    }
+}
+document.getElementById("searchInput").addEventListener("keypress", handlekeypress);
 
 // Add event listener to the submit button for searching based on user input
 document.getElementById("submitBtn").addEventListener("click", function () {
     searchBasedOnInput(); // Call the function to search based on user input
 });
-
 // Add event listener to the "Find Breweries Near Me" button for finding breweries near user's location
 document.getElementById("findNearMeBtn").addEventListener("click", function () {
     findBreweriesNearMe(); // Call the function to find breweries near user's location
