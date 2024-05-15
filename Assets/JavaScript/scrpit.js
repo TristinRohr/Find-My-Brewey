@@ -71,12 +71,14 @@ function removeFavorite(breweryId) {
 }
 
 
-
-// Event listener for the Favorites button
-document.getElementById('favoritesButton').addEventListener('click', function () {
-    // Toggle the class to show/hide the dropdown when the Favorites button is clicked
-    document.getElementById('favoritesDropdown').classList.toggle('hidden');
-});
+const favoritesButtonWrapper = document.getElementById('favoritesButtonWrapper');
+document.addEventListener('click', function(event) {
+    if(favoritesButtonWrapper.contains(event.target)) {
+        document.getElementById('favoritesDropdown').classList.remove('hidden');
+    } else {
+        document.getElementById('favoritesDropdown').classList.add('hidden');
+    }
+})
 
 // Call the displayFavorites function initially to populate the dropdown
 displayFavorites();
