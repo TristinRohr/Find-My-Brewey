@@ -8,14 +8,15 @@ Welcome to Find My Brewery, your go-to platform for discovering breweries near y
 
 1. **Search by Location:**
    - Enter a state in the search bar.
-   - Click the search button.
+   - Click the search button or hit enter on your keyboard.
    - Browse through the list of breweries in your specified location.
 
 2. **Explore Brewery Details:**
-   - Click on a brewery name to view more details.
+   - Click on "Visit Website" to view more details.
    - Explore the brewery's name, city, address, and link to their website.
 3. **Favorite:**
    - Add breweries to your favorites so you can plan ahead.
+   - Remove breweries you no longer want in your favorites.
 
 4. **Turn off Ad-Blockers:**
    - The API's fetch will be blocked by Ad-Blockers
