@@ -40,6 +40,7 @@ function displayFavorites() {
             var optionLink = document.createElement('a');
             optionLink.textContent = brewery.name;
             optionLink.href = brewery.website_url;
+            optionLink.target = '_blank';
             listItem.appendChild(optionLink);
 
             var deleteButton = document.createElement('button');
