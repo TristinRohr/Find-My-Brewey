@@ -139,7 +139,10 @@ function displayBreweries(breweries) {
         });
         resultsContainer.appendChild(div);
     } else {
-        resultsContainer.textContent = 'No breweries found';
+        var noResults = document.createElement('div');
+        noResults.classList.add('text-center', 'text-lg', 'text-orange-500', 'p-4', 'font-bold', 'rounded-lg', 'shadow-md', 'bg-orange-100', 'w-1/2' , 'mx-auto', 'mt-4');
+        noResults.textContent = 'No results found';
+        resultsContainer.appendChild(noResults);
     }
 }
 // Add event listener to the search input for searching based on user input
