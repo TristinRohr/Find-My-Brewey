@@ -171,6 +171,8 @@ function searchBasedOnInput() {
 
 // Function to find breweries near user's location
 function findBreweriesNearMe() {
+    document.getElementById('searchInput').value = '';
+
     fetch('https://api.ipgeolocation.io/ipgeo?apiKey=ffd1b3ca5b3d46aab22ef6c4e8520bc4')
         .then(response => {
             if (!response.ok) {
