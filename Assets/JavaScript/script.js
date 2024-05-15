@@ -168,7 +168,7 @@ function searchBasedOnInput() {
     if (query.trim() !== '') {
         searchBreweries(query);
     } else {
-        alert('Please enter a valid query');
+        showModal('Please enter a valid query');
     }
 }
 
@@ -192,12 +192,11 @@ function findBreweriesNearMe() {
             if (latitude !== undefined && longitude !== undefined) {
                 searchBreweries('', latitude, longitude); // Pass empty query for nearby search
             } else {
-                alert('Failed to get user location');
+                console.error('Failed to get user location');
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('Failed to fetch user location');
         });
 }
 
