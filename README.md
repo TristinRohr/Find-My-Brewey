@@ -1,6 +1,6 @@
 # Find-My-Brewery
 
-Welcome to Find My Brewery, your go-to platform for discovering breweries near you! Whether you're a craft beer enthusiast or simply looking for a new spot to unwind, Find My Brewery makes it easy to find breweries in any city, state, or zipcode.
+Welcome to Find My Brewery, your go-to platform for discovering breweries near you! Whether you're a craft beer enthusiast or simply looking for a new spot to unwind, Find My Brewery makes it easy to find breweries in any state.
 
 ![Screenshot](Assets/Screenshotbr.png)
 
