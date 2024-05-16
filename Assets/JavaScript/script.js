@@ -45,7 +45,7 @@ function displayFavorites() {
 
             var deleteButton = document.createElement('button');
             deleteButton.textContent = 'Remove';
-            deleteButton.classList.add('bg-red-500', 'text-white', 'm-3', 'rounded', 'px-2', 'py-1', 'focus:outline-none', 'focus:ring-2', 'focus:ring-red-500', 'focus:ring-opacity-50');
+            deleteButton.classList.add('border', 'border-black', 'bg-red-500', 'text-white', 'm-3', 'rounded', 'px-2', 'py-1', 'focus:outline-none', 'focus:ring-2', 'focus:ring-red-500', 'focus:ring-opacity-50');
             
             // Event listener to remove brewery from favorites
             deleteButton.addEventListener('click', function(event) {
